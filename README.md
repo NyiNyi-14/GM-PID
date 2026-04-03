@@ -88,6 +88,7 @@ Sensitivity score of the PID and GM-PID controllers over the (R,L) uncertainty d
 ## Related Work
 
 This work revisits the ultra-local model of iPID and reformulates it as a gain-modulated PID framework for sensitivity shaping and robustness improvement.
+
 	•	Robust control
 	•	Sensitivity analysis
 
