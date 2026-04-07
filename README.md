@@ -74,7 +74,6 @@ Make sure all scripts are in the same directory.
 
 <p align="center">
   <b>Sensitivity of PID and GM-PID over (R,L) uncertainty domains</b><br>
-
   <img src="media/Sensitivity_Score_Plots.png" width="80%"><br>
 </p>
 
