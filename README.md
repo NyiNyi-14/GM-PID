@@ -1,27 +1,21 @@
 # Gain-Modulated PID Control for Robust Performance Under Parametric Uncertainty
 
-## Note: The manuscript associated with this project is currently under review at CDC 2026.
-
 <p align="center">
-  <b>Block diagram of the proposed GM-PID controller.</b><br>
-  <img src="media/Model_Diagram.png" width="80%">
+  <b> Block diagram of the proposed GM-PID controller</b><br>
+  <img src="media/Model_Diagram.png" width="100%">
 </p>
 
-This work introduces a framework for shaping closed-loop sensitivity under parametric uncertainty without explicit disturbance estimation, by embedding unknown effects into the control law through a gain-modulated mechanism.  
-
-This repository contains the code, data, and methods used to implement the GM-PID controller.
-
----
+This work introduces a framework designed to shape closed-loop error dynamics without explicit disturance estmation by embeding unknown effects into control law through a gain modulated mechanism. This repostitory contains the code, data, and methods used to model a gain-modulated PID control method. The figure above extends the conventional PID structure (red) with derivative scaling terms and an α-dependent gain modulation factor. 
 
 ## Project Structure
 
-- The `Libraries` folder contains custom modules for system modeling, parameter estimation, and GM-PID design.
+  - The `Libraries` folder contains custom modules for system modeling, parameter estimation, and GMPID design used by the main scripts.
 
-- `nom_tracking.py` – Evaluates nominal tracking under steady load, including tracking performance, control input, and performance index for both classical PID and GM-PID.
+  - `nom_tracking.py` – Runs the DC Motor simulation shown in the figure above. Results are analyzed on the specified parameter $\alpha$, performance is measured by the tracking cost, $J$, normalized by a PID simulation of the same system. 
 
-- `sen_analysis.py` – Performs parametric sensitivity analysis under variations in armature resistance and inductance.
+  - `sen_analysis.py` – Comparison of PID and GM-PID performance over (R,L) variation 
 
-- `sin_loadtorque.py` – Evaluates disturbance rejection under sinusoidal load torque.
+  - `sin_loadtorque.py` – Analysing sinusoidal disturbance rejection performance of PID and GM-PID.
 
 ---
 
@@ -40,6 +34,10 @@ pip install -r requirements.txt
 ```
 ---
 
+## How to Run
+
+### Setup
+
 Download or clone the repository:
 
 ```bash
@@ -53,52 +51,64 @@ Make sure all scripts are in the same directory.
 ## Results
 
 <p align="center">
-  <img src="media/PID_Input_Response.png" width="100%"><br>
-Speed tracking and control input response of the classical PID controller under the step reference profile. The actuator saturation limits are indicated for reference. <br>
+  <b>Response of classical PID controller:</b><br>
+  <img src="media/PID_Input_Response.png" width="80%"><br>
+
+  Speed tracking and control input response of the classical PID controller under the step reference profile. The actuator saturation limits are indicated for reference. <br>
+
+</p>
+<p align="center">
+  <b>Response of Gain-Modulated PID controller:</b><br>
+  <img src="media/GMPID_Input_Response.png" width="80%"><br>
+  
+  Parametric response of the GM-PID controller under different modulation factors α. The color bar represents the value of α, illustrating its influence on transient and steady-state behavior.<br>
 </p>
 
 <p align="center">
-  <img src="media/GMPID_Input_Response.png" width="100%"><br>
- Parametric response of the GM-PID controller under different modulation factors α. The color bar represents the value of α, illustrating its influence on transient and steady-state behavior.<br>
+  <b>Normalized performance index and speed responses:</b><br>
+  <img src="media/Normalized_performance.png" width="80%"><br>
+
+  (Top) Normalized performance index J_rel for PID and GM-PID configurations. <br>
+  (Bottom) Representative GM-PID speed responses for α = 0.3 and α = 0.5 are shown below to illustrate the performance variation induced by the modulation parameter α.<br>
 </p>
 
 <p align="center">
-  <img src="media/Normalized_performance.png" width="100%"><br>
-  (Top) Normalized performance index for J_rel for PID and GM-PID values<br>
-  (Bottom) GM-PID responses for α = 0.3 and α = 0.5 <br>
+  <b>Sensitivity of PID and GM-PID over (R,L) uncertainty domains</b><br>
+
+  <img src="media/Sensitivity_Score_Plots.png" width="80%"><br>
 </p>
 
 <p align="center">
-  <img src="media/Sensitivity_Score_Plots.png" width="100%"><br>
-</p>
-Sensitivity score of the PID and GM-PID controllers over the (R,L) uncertainty domain. The GM-PID results for α = 0.4, 0.5, and 0.6 are shown as representative cases.<br>
-</p>
-
-<p align="center">
-  <img src="media/Dynamic_Load_Torque.png" width="100%"><br>
-  Dynamic load torque profile and speed responses of PID and GM-PID under a sinusoidal load disturbance applied at t = 40s. <br>
+  <b>Dynamic load torque profile and Speed Responses </b><br>
+  <img src="media/Dynamic_Load_Torque.png" width="80%"><br>
+  
+  Dynamic load torque profile and speed responses of PID and GM-PID under a sinusoidal load disturbance applied at t = 40 s. <br>
 </p>
 
 <p align="center">
-  <img src="media/performance.png" width="100%"><br>
-  (Top) Performance index J_rel for PID and GM-PID across tested α values. (Bottom) Representative GM-PID responses for α = 0.3 and α = 0.9. <br>
+  <b>Response of classical PID controller:</b><br>
+  <img src="media/performance.png" width="80%"><br>
+
+  (Top) Performance index Jrel for PID and GM-PID across tested α values. <br>
+  (Bottom) Representative GM-PID responses for α = 0.3 and α = 0.9.<br>
+
 </p>
 ---
 
 ## Related Work
 
-This work revisits the ultra-local model of iPID and reformulates it as a gain-modulated PID framework for sensitivity shaping and robustness improvement.
+This project focus on:
 
-	•	Robust control
-	•	Sensitivity analysis
+- Robust controller
+- Sensitivity analysis
 
 ---
 
 ## Citation
 
-To be updated upon publication:
+To acknowledge the use of this work, please cite the following publication:
 
 ```bibtex
-
+To be updated upon publication
 ```
 ---
